@@ -71,7 +71,7 @@ While the Azure Provider option creates a new ServiceAccount, the generic provid
 
 ## Setup Review App
 
-Below is an example YAML snippet for adding Review App to an **existing** pipeline. In this example, the first deployment job is run for non-PR branches and performs deployments against regular Kubernetes resource under environments. The second job runs only for PR branches and deploys against review app resources (namespaces inside Kubernetes cluster) generated on the fly. These resources are marked with a 'Review' label in the resource listing view of the environment.
+Below is an example YAML snippet for adding Review App to an **existing** pipeline. In this example, the first deployment job is run for non-PR branches and performs deployments against regular Kubernetes resource under environments (the `$(resourceName)` namespace resource must **already exist** under `$(envName)`). The second job runs only for PR branches and deploys against review app resources (namespaces inside Kubernetes cluster) generated on the fly. These resources are marked with a 'Review' label in the resource listing view of the environment.
 
 ```YAML
 - stage: Deploy
